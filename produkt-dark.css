@@ -203,6 +203,39 @@ main {
   cursor: zoom-out;
   z-index: 1001;
 }
+@media (max-width: 600px) {
+  main {
+    flex-direction: column;
+    padding: 1rem;
+  }
 
+  .produkt-bereich {
+    flex-direction: column;
+  }
+
+  .produkt-details {
+    padding: 0 1rem;
+  }
+
+  .produkt-details h1 {
+    font-size: 1.4rem;
+  }
+
+  .trust-icons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .produkt-details .sizes {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .produkt-details .sizes button {
+    flex: 1 1 30%;
+  }
+}
 
 
