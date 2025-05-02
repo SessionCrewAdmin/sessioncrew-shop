@@ -1,12 +1,22 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   renderCartOverlay(cart);
+
+  // Größe aktiv setzen
+  document.querySelectorAll('.size-btn')?.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const size = btn.getAttribute('data-size');
+      const sizeInput = document.getElementById('groesse');
+      if (sizeInput) sizeInput.value = size;
+    });
+  });
 });
 
 function renderCartOverlay(cart) {
   const overlay = document.createElement("div");
   overlay.id = "cart-overlay";
-  overlay.style.cssText = `
+  overlay.style.cssText = \`
     position: fixed;
     top: 0; right: 0;
     width: 400px; max-width: 100%;
@@ -20,8 +30,8 @@ function renderCartOverlay(cart) {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-  `;
-  overlay.innerHTML = `
+  \`;
+  overlay.innerHTML = \`
     <div style="display:flex; justify-content:space-between; align-items:center;">
       <h2 style="margin:0;">🛒 Warenkorb</h2>
       <button onclick="toggleCart()" style="font-size:1.5rem; background:none; color:white; border:none;">×</button>
@@ -32,7 +42,7 @@ function renderCartOverlay(cart) {
       <p style="text-align:right; font-size: 1.2rem;">Gesamt: <strong id="cart-total">0,00 €</strong></p>
       <button class="button" style="width:100%; background:#f00; color:white; font-weight:bold; padding:1rem; border:none; border-radius:8px; cursor:pointer;">ZUR KASSE</button>
     </div>
-  `;
+  \`;
 
   document.body.appendChild(overlay);
   updateCartOverlay();
@@ -59,17 +69,17 @@ function updateCartOverlay() {
     const container = document.createElement("div");
     container.style.cssText = "display:flex; gap:1rem; margin-bottom:1.5rem; align-items:center;";
 
-    container.innerHTML = `
-      <img src="${item.image || 'platzhalter.jpg'}" style="width:70px; height:70px; object-fit:cover; border-radius:4px;">
+    container.innerHTML = \`
+      <img src="\${item.image || 'platzhalter.jpg'}" style="width:70px; height:70px; object-fit:cover; border-radius:4px;">
       <div style="flex:1;">
-        <strong>${item.name}</strong><br>
-        <small>${item.size} / ${item.color || 'Farbe'}</small><br>
-        <small>${item.price.toFixed(2)} €</small>
+        <strong>\${item.name}</strong><br>
+        <small>\${item.size} / \${item.color || 'Farbe'}</small><br>
+        <small>\${item.price.toFixed(2)} €</small>
       </div>
       <div>
-        <button onclick="removeItem(${index})" style="background:none; color:#f55; border:none; cursor:pointer;">Entfernen</button>
+        <button onclick="removeItem(\${index})" style="background:none; color:#f55; border:none; cursor:pointer;">Entfernen</button>
       </div>
-    `;
+    \`;
 
     list.appendChild(container);
     sum += item.price;
@@ -79,8 +89,8 @@ function updateCartOverlay() {
 
   const rest = 100 - sum;
   versandHinweis.textContent = rest > 0
-    ? `Füge deiner Bestellung Artikel im Wert von ${rest.toFixed(2)} € hinzu und erhalte kostenlosen Versand!`
-    : `🎉 Du hast kostenlosen Versand erreicht!`;
+    ? \`Füge deiner Bestellung Artikel im Wert von \${rest.toFixed(2)} € hinzu und erhalte kostenlosen Versand!\`
+    : \`🎉 Du hast kostenlosen Versand erreicht!\`;
 }
 
 function removeItem(index) {
