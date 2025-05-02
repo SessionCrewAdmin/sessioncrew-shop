@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sessioncrew minimalistic – black</title>
+  <link rel="stylesheet" href="produkt-dark.css">
+  <script src="cart.js" defer></script> <!-- Wichtig für addToCartAuto() -->
+</head>
+<body>
+  <header>
+    <h1>SessionCrew</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="produkte.html">Shop</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="#" onclick="toggleCart()">🛒</a>
+    </nav>
+  </header>
+  <main>
+    <div class="produkt-bereich">
+      <div class="bildbereich">
+        <div class="thumbnails">
+          <img src="Sessioncrew minimalistic.png" alt="Vorschau 1" onclick="wechselBild(this.src)">
+          <img src="Sessioncrew minimalistic.png" alt="Vorschau 2" onclick="wechselBild(this.src)">
+        </div>
+        <div class="hauptbild">
+          <img id="produktbild" class="zoomable" src="Sessioncrew minimalistic.png" alt="Sessioncrew minimalistic">
+        </div>
+      </div>
+      <div class="produkt-details">
+        <h1 id="produktname">Sessioncrew minimalistic</h1>
+        <div>
+          <span class="price" id="preis">29,99 €</span>
+          <span class="old-price">34,95 €</span>
+        </div>
+        <p>Deine Crew. Dein Style. Reduziert auf das Wesentliche.</p>
+        <label for="groesse">Größe:</label>
+        <div class="sizes">
+          <button onclick="selectSize('S')">S</button>
+          <button onclick="selectSize('M')">M</button>
+          <button onclick="selectSize('L')">L</button>
+          <button onclick="selectSize('XL')">XL</button>
+          <button onclick="selectSize('XXL')">XXL</button>
+          <button onclick="selectSize('3XL')">3XL</button>
+        </div>
+        <input type="hidden" id="groesse" value="M">
+        <label>Farbe:</label>
+        <span id="farbe" class="color-box" style="background:black;">schwarz</span>
+        <button class="button" onclick="addToCartAuto()">In den Warenkorb</button>
+        <div class="trust-icons">
+          <div><img src="icon-1.png" alt="Versand"> Kostenloser Versand ab 100€</div>
+          <div><img src="icon-2.png" alt="Nachhaltigkeit"> Nachhaltig und qualitativ</div>
+          <div><img src="icon-3.png" alt="Rückgabe"> 14 Tage Rückgaberecht</div>
+          <div><img src="icon-4.png" alt="Plastikfrei"> Plastikfreier Versand</div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    &copy; 2025 SessionCrew
+  </footer>
+</body>
+</html>
