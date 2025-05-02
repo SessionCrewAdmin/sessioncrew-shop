@@ -42,8 +42,7 @@
           <button onclick="selectSize('L')">L</button>
           <button onclick="selectSize('XL')">XL</button>
           <button onclick="selectSize('XXL')">XXL</button>
-          <button onclick="selectSize('3XL')">3XL</button>
-        </div>
+          <button onclick="selectSize('3XL')">3XL</button></div>
         <input type="hidden" id="groesse" value="M">
         <label>Farbe:</label>
         <span class="color-box" style="background:black;">schwarz</span>
@@ -61,5 +60,12 @@
   <footer>
     &copy; 2025 SessionCrew
   </footer>
+
+<script>
+  function selectSize(size) {
+    document.getElementById('groesse').value = size;
+  }
+</script>
+
 </body>
 </html>
